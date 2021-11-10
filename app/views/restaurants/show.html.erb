@@ -1,0 +1,18 @@
+<h1><%= @restaurant.name%></h1>
+
+<ul>
+    <% if @restaurant.reviews.any? %>
+      <% @restaurant.reviews.each do |review| %>
+          <li><%= review.content %> <%= review.rating %></li>
+      <% end %>
+    <% else %>
+      <li><%= link_to "Enter a review", new_restaurant_review_path(@restaurant), class: 'opacity-75' %></li>
+    <% end %>
+</ul>
+
+<ul class = "show-nav">
+  <% if @restaurant.reviews.any? %>
+  <li><%= link_to "Leave a review", new_restaurant_review_path(@restaurant), class: 'opacity-75' %></li>
+  <% end %>
+  <li><%= link_to 'Back', restaurants_path %></li>
+</ul>
