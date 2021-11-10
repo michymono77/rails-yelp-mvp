@@ -4,6 +4,10 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def search
+    @restaurants = Restaurant.where("name LIKE ?", "%" + params[:q] + "%")
+  end
+
   def show
   end
 
